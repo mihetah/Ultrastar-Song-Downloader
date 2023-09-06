@@ -204,7 +204,7 @@ if __name__ == '__main__':
                 else:
                     thumbnail_url = Search(cur_song.title + ' ' + cur_song.artist).results[0].thumbnail_url
                 if thumbnail_url is not None:
-                    thumbnail_url = thumbnail_url.replace('hqdefault', 'maxresdefault')
+                    # thumbnail_url = thumbnail_url.replace('hqdefault', 'maxresdefault')
                     try:
                         # download image from url
                         r = requests.get(thumbnail_url)
@@ -214,6 +214,20 @@ if __name__ == '__main__':
                         cur_song.cover_present = True
                     except Exception as e:
                         print('Failed to download cover for {}, exception: {}'.format(cur_song.folder_name, e))
+                        if cur_song.youtube_id_present:
+                            cur_song = search_youtube(cur_song, cur_song.video_name)
+                            searched_youtube = True
+                            try:
+                                thumbnail_url = Search(cur_song.title + ' ' + cur_song.artist).results[0].thumbnail_url
+                                # download image from url
+                                r = requests.get(thumbnail_url)
+                                # open method to open a file on your system and write the contents
+                                with open(UNPROCESSED_PATH + cur_song.folder_name + '/' + cur_song.cover_name,
+                                          "wb") as code:
+                                    code.write(r.content)
+                                    cur_song.cover_present = True
+                            except Exception as e:
+                                print('Failed to download cover for {}, exception: {}'.format(cur_song.folder_name, e))
         missing_video_counter, missing_audio_counter, missing_cover_counter = update_txt_file(cur_song,
                                                                                               missing_video_counter,
                                                                                               missing_audio_counter,
