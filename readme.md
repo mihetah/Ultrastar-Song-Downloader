@@ -18,6 +18,14 @@
 
 ![Contributors](https://img.shields.io/github/contributors/mihetah/ultrastar_downloader?color=dark-green) ![Issues](https://img.shields.io/github/issues/mihetah/ultrastar_downloader) ![License](https://img.shields.io/github/license/mihetah/ultrastar_downloader) 
 
+### TODO
+
+This project is still unfinshed. Things to do:
+
+* Custom Paths via args
+* Fix some bugs
+* Implement download from db?
+
 ## About The Project
 
 ![Screen Shot](https://raw.githubusercontent.com/mihetah/ultrastar_downloader/master/images/screenshot.png)
