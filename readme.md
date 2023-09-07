@@ -25,6 +25,7 @@ This project is still unfinshed. Things to do:
 * Custom Paths via args
 * Fix some bugs
 * Implement download from db?
+* Implement torrent downloads from https://ultrastar-es.org
 
 ## About The Project
 
